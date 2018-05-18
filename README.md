@@ -18,15 +18,13 @@ PUSHER_APP_KEY=app-key
 PUSHER_APP_SECRET=app-secret
 ```
 
-- Update the `pusher.service.ts` file with your pusher key
-
 > **Note**: ensure to replace the placeholder values with your pusher `appId`, `key` and `secret`.
 
 - Clone the repo
 - Enter the project folder
 - Run npm install 
 - Start server by running `node server`
-- Run `ng serve` to start the Angular dev server 
+- Run `yarn start` to start the dev server 
 
 
 ## Built With
