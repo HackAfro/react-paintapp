@@ -11,7 +11,7 @@ class Canvas extends Component {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
 
-    this.pusher = new Pusher('3dddad24c242ae9a36ca', {
+    this.pusher = new Pusher('PUSHER_KEY', {
       cluster: 'eu',
     });
   }
@@ -71,7 +71,7 @@ class Canvas extends Component {
       userId: this.userId,
     };
 
-    const req = await fetch('http://localhost:4000/draw', {
+    const req = await fetch('http://localhost:4000/paint', {
       method: 'post',
       body: JSON.stringify(body),
       headers: {

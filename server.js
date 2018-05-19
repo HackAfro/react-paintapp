@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/draw', (req, res) => {
+app.post('/paint', (req, res) => {
   pusher.trigger('painting', 'draw', req.body);
   res.json(req.body);
 });
