@@ -7,16 +7,15 @@ class Canvas extends Component {
     super(props);
 
     this.onMouseDown = this.onMouseDown.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
-    this.onMouseUp = this.onMouseUp.bind(this);
+    this.endPaintEvent = this.endPaintEvent.bind(this);
 
     this.pusher = new Pusher('PUSHER_KEY', {
       cluster: 'eu',
     });
   }
   isPainting = false;
-  userStrokeStyle = '#2';
+  userStrokeStyle = '#EE92C2';
   guestStrokeStyle = '#F0C987';
   line = [];
   userId = v4();
@@ -40,13 +39,8 @@ class Canvas extends Component {
       this.paint(this.prevPos, offSetData, this.userStrokeStyle);
     }
   }
-  onMouseUp() {
-    if (this.isPainting) {
-      this.isPainting = false;
-      this.sendPaintData();
-    }
-  }
-  onMouseLeave() {
+
+  endPaintEvent() {
     if (this.isPainting) {
       this.isPainting = false;
       this.sendPaintData();
@@ -107,8 +101,8 @@ class Canvas extends Component {
         ref={(ref) => (this.canvas = ref)}
         style={{ background: 'black' }}
         onMouseDown={this.onMouseDown}
-        onMouseLeave={this.onMouseLeave}
-        onMouseUp={this.onMouseUp}
+        onMouseLeave={this.endPaintEvent}
+        onMouseUp={this.endPaintEvent}
         onMouseMove={this.onMouseMove}
       />
     );
